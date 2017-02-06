@@ -1,0 +1,3 @@
+{:require [screeps.main]
+ :optimizations :none
+ :compiler-options {:target :nodejs}}

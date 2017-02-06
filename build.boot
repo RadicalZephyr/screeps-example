@@ -1,15 +1,14 @@
 (def project 'screeps-example)
 (def version "0.1.0-SNAPSHOT")
 
-(set-env! :resource-paths #{"src"}
+(set-env! :source-paths #{"src"}
+          :resource-paths #{"resources"}
           :dependencies   '[[org.clojure/clojure "1.8.0"]
-                            [radicalzephyr/boot-screeps "0.1.0-SNAPSHOT"]])
+                            [radicalzephyr/boot-screeps "0.1.0-SNAPSHOT" :scope "test"]
+                            [adzerk/boot-cljs "1.7.228-2" :scope "test"]])
 
 (task-options!
  pom {:project     project
       :version     version})
 
-(deftask build
-  "Build and install the project locally."
-  []
-  (comp (pom) (jar) (install)))
+(require '[adzerk.boot-cljs :refer [cljs]])
